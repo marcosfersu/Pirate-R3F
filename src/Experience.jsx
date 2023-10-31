@@ -54,11 +54,12 @@ export default function Experience() {
           */}
         </EffectComposer>
         <Sparkles
-          size={1}
+          size={2.5}
           speed={0}
           scale={[0, 1.5, 10]}
           position={[-1, 1.5, -2]}
           rotation-y={Math.PI * 0.8}
+          color={"#80806A"}
         />
         {/* Camera movements */}
         <CameraRig />
