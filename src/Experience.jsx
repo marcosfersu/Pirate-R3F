@@ -3,6 +3,7 @@ import {
   OrbitControls,
   useScroll,
   ScrollControls,
+  Sparkles,
 } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Water from "./Water";
@@ -50,6 +51,13 @@ export default function Experience() {
           />
           */}
         </EffectComposer>
+        <Sparkles
+          size={1}
+          speed={0}
+          scale={[2, 1, 10]}
+          position={[-1, 1, -2]}
+          rotation-y={Math.PI * 0.8}
+        />
         {/* Camera movements */}
         <CameraRig />
       </ScrollControls>
