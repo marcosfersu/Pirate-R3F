@@ -83,19 +83,20 @@ function PirateScene({ ...props }) {
 
 function TextScene() {
   return (
-    <Text
-      font="./roboto-slab-v34-latin-800.woff"
-      fontSize={0.17}
-      position={[2.2, 0.4, -0.5]}
-      rotation-y={1}
-      maxWidth={1}
-      color={"#c2c2c2"}
-      fillOpacity={1}
-      lineHeight={1}
-      textAlign="center"
-    >
-      Pirate web Experience
-    </Text>
+    <>
+      <Text
+        font="./kaushan-script-v16-latin-regular.woff"
+        fontSize={0.1}
+        position={[2.2, 0.4, -0.5]}
+        rotation-y={1}
+        maxWidth={1}
+        color={"#917E50"}
+        fillOpacity={1}
+        lineHeight={1}
+      >
+        The Pirate's House
+      </Text>
+    </>
   );
 }
 
