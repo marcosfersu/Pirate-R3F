@@ -4,6 +4,7 @@ import {
   useScroll,
   ScrollControls,
   Sparkles,
+  Text,
 } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Water from "./Water";
@@ -28,7 +29,7 @@ export default function Experience() {
       {/* <Perf position="top-left" /> */}
       <color args={["#0B3C54"]} attach={"background"} />
       {/* <OrbitControls makeDefault /> */}
-
+      <TextScene />
       <ScrollControls pages={10}>
         <Center>
           <PirateScene />
@@ -41,7 +42,7 @@ export default function Experience() {
             luminanceThreshold={0.2}
             mipmapBlur
             luminanceSmoothing={0.3}
-            intensity={2}
+            intensity={1}
           />
           {/*
           <DepthOfField
@@ -76,6 +77,24 @@ function PirateScene({ ...props }) {
       <Moon />
       <Background />
     </>
+  );
+}
+
+function TextScene() {
+  return (
+    <Text
+      font="./roboto-slab-v34-latin-800.woff"
+      fontSize={0.17}
+      position={[2.2, 0.4, -0.5]}
+      rotation-y={1}
+      maxWidth={1}
+      color={"#c2c2c2"}
+      fillOpacity={1}
+      lineHeight={1}
+      textAlign="center"
+    >
+      Pirate web Experience
+    </Text>
   );
 }
 
