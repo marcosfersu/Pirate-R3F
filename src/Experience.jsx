@@ -98,7 +98,7 @@ function CameraRig() {
       delta
     );
     offset < 0.4
-      ? state.camera.lookAt(1, -0.3, 0)
+      ? state.camera.lookAt(1, -0.2, 0)
       : state.camera.lookAt(0, -1 * (offset * pages), 0);
   });
 }

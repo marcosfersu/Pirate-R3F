@@ -7,7 +7,7 @@ import { useRef } from "react";
 
 const MoonMaterial = shaderMaterial(
   {
-    uMoonColor: new THREE.Color("#DEDAC2"),
+    uMoonColor: new THREE.Color("#B0B08D"),
     uBgColor: new THREE.Color("#0B3C54"),
   },
   moonBgVertexShader,
