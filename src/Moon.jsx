@@ -8,7 +8,6 @@ import { useRef } from "react";
 const MoonMaterial = shaderMaterial(
   {
     uMoonColor: new THREE.Color("#B0B08D"),
-    uBgColor: new THREE.Color("#0B3C54"),
   },
   moonBgVertexShader,
   moonFragmentShader
@@ -22,7 +21,7 @@ const WaterBg = () => {
   return (
     <mesh rotation-y={Math.PI * 0.25} position={[-4, -0.55, -2]}>
       <planeGeometry args={[1.5, 1.5, 1, 1]} />
-      <moonMaterial ref={moonMaterial} />
+      <moonMaterial ref={moonMaterial} transparent />
     </mesh>
   );
 };
