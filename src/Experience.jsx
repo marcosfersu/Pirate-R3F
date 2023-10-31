@@ -9,6 +9,7 @@ import { Perf } from "r3f-perf";
 import Water from "./Water";
 import House from "./House";
 import Light from "./Light";
+import Moon from "./Moon";
 import Miscellaneous from "./Miscellaneous";
 import Background from "./Background";
 import { useFrame } from "@react-three/fiber";
@@ -54,8 +55,8 @@ export default function Experience() {
         <Sparkles
           size={1}
           speed={0}
-          scale={[2, 1, 10]}
-          position={[-1, 1, -2]}
+          scale={[0, 1.5, 10]}
+          position={[-1, 1.5, -2]}
           rotation-y={Math.PI * 0.8}
         />
         {/* Camera movements */}
@@ -72,6 +73,7 @@ function PirateScene({ ...props }) {
       <Light />
       <House />
       <Water />
+      <Moon />
       <Background />
     </>
   );
