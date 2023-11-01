@@ -13,10 +13,10 @@ const WaterMaterial = shaderMaterial(
     uTime: 0,
 
     uBigWavesSpeed: 0.59,
-    uBigWavesElevation: 0.012,
+    uBigWavesElevation: 0.01,
     uBigWavesFrequency: new THREE.Vector2(1.516, 2.986),
 
-    uSmallWaveElevation: 0.1,
+    uSmallWaveElevation: 0.08,
     uSmallWaveFrequency: 1.671,
     uSmallWaveSpeed: 0.18,
     uSmallWaveIteration: 3,
