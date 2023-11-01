@@ -14,7 +14,10 @@ const Light = () => {
 				scale={0.2}
 				position={[0.42, -0.585, -1.655]}
 			>
-				<meshBasicMaterial color={"#FFEEA8"} />
+				<meshBasicMaterial
+					color={[2.5 * 10, 2 * 10, 1 * 10]}
+					toneMapped={false}
+				/>
 			</mesh>
 		</>
 	);

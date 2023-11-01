@@ -17,7 +17,7 @@ const House = () => {
 				scale={0.2}
 				position={[1.0, -0.87, -2.14]}
 			>
-				<meshBasicMaterial color={"#211d16"} />
+				<meshBasicMaterial color={"#211d16"} toneMapped={false} />
 			</mesh>
 			{/* HOUSE RIGHT*/}
 			<mesh
@@ -25,7 +25,7 @@ const House = () => {
 				scale={0.2}
 				position={[0.33, 0, -2.36]}
 			>
-				<meshBasicMaterial map={boatPalmRHouseBaked} />
+				<meshBasicMaterial map={boatPalmRHouseBaked} toneMapped={false} />
 			</mesh>
 			{/* HOUSE */}
 			<mesh
@@ -33,7 +33,7 @@ const House = () => {
 				scale={0.2}
 				position={[0.12, -0.582, -1.805]}
 			>
-				<meshBasicMaterial map={bakedTextureHouse} />
+				<meshBasicMaterial map={bakedTextureHouse} toneMapped={false} />
 			</mesh>
 			{/* DOCK */}
 			<mesh
@@ -41,7 +41,7 @@ const House = () => {
 				scale={0.2}
 				position={[0.24, -0.76, -1.53]}
 			>
-				<meshBasicMaterial map={bakedTextureDock} />
+				<meshBasicMaterial map={bakedTextureDock} toneMapped={false} />
 			</mesh>
 		</>
 	);
