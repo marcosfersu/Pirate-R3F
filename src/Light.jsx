@@ -10,7 +10,7 @@ const Light = () => {
         scale={0.2}
         position={[0.42, -0.585, -1.655]}
       >
-        <meshBasicMaterial color={[2.5 * 8, 2 * 8, 1 * 8]} toneMapped={false} />
+        <meshBasicMaterial color={[2.5 * 6, 2 * 6, 1 * 6]} toneMapped={false} />
       </mesh>
       {/* LANTER */}
       <mesh
