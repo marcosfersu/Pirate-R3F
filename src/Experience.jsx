@@ -22,6 +22,7 @@ import {
 	Vignette,
 } from "@react-three/postprocessing";
 import WaterBg from "./WaterBg";
+import Flag from "./Flag";
 
 export default function Experience() {
 	return (
@@ -75,6 +76,7 @@ function PirateScene({ ...props }) {
 			<Light />
 			<House />
 			<Water />
+			<Flag />
 			<Moon />
 			<Background />
 		</>
