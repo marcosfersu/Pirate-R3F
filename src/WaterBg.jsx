@@ -20,8 +20,8 @@ const WaterBg = () => {
   const waterBgMaterial = useRef();
 
   return (
-    <mesh rotation-y={Math.PI * 0.25} position={[3.2, -1.6, 2]}>
-      <planeGeometry args={[5, 2, 1, 1]} />
+    <mesh rotation-y={Math.PI * 0.25} position={[3.2, -1.33, 2]}>
+      <planeGeometry args={[5, 1.5, 1, 1]} />
       <waterBgMaterial ref={waterBgMaterial} />
     </mesh>
   );

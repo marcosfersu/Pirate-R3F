@@ -23,13 +23,14 @@ import {
 } from "@react-three/postprocessing";
 import WaterBg from "./WaterBg";
 import Flag from "./Flag";
+import Deep from "./Deep";
 
 export default function Experience() {
   return (
     <>
       {/* <Perf position="top-left" /> */}
       <color args={["#0B3C54"]} attach={"background"} />
-      {/* <OrbitControls makeDefault /> */}
+
       <TextScene />
       <ScrollControls pages={10}>
         <PirateScene />
@@ -61,6 +62,7 @@ export default function Experience() {
         />
         {/* Camera movements */}
         <CameraRig />
+        {/* <OrbitControls makeDefault /> */}
       </ScrollControls>
     </>
   );
@@ -78,6 +80,7 @@ function PirateScene({ ...props }) {
         <Background />
       </Center>
       <Flag />
+      <Deep />
       <WaterBg />
     </>
   );
@@ -120,8 +123,8 @@ function CameraRig() {
       0.5,
       delta
     );
-    offset < 0.4
-      ? state.camera.lookAt(1, -0.2, 0)
-      : state.camera.lookAt(0, -1 * (offset * pages), 0);
+    offset < 0.3
+      ? state.camera.lookAt(1, 0.2, 0)
+      : state.camera.lookAt(1, offset * pages * -0.7, 0);
   });
 }
