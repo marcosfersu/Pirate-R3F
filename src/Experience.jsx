@@ -15,15 +15,10 @@ import Miscellaneous from "./Miscellaneous";
 import Background from "./Background";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
-import {
-  EffectComposer,
-  Bloom,
-  DepthOfField,
-  Vignette,
-} from "@react-three/postprocessing";
 import WaterBg from "./WaterBg";
 import Flag from "./Flag";
 import Deep from "./Deep";
+import Effect from "./Effect";
 
 export default function Experience() {
   return (
@@ -35,23 +30,8 @@ export default function Experience() {
       <ScrollControls pages={10}>
         <PirateScene />
         {/* Postprocessing */}
-        <EffectComposer disableNormalPass>
-          <Vignette offset={0.3} darkness={0.9} />
-          <Bloom
-            luminanceThreshold={0}
-            mipmapBlur
-            luminanceSmoothing={0.2}
-            intensity={0.1}
-          />
-          {/*
-          <DepthOfField
-          target={[blur.x, blur.y, blur.z]}
-          focalLength={0.025}
-          focusDistance={0.025}
-          bokehScale={5}
-          />
-        */}
-        </EffectComposer>
+        <Effect />
+        {/* STARTS */}
         <Sparkles
           size={2.5}
           speed={0}
@@ -124,7 +104,7 @@ function CameraRig() {
       delta
     );
     offset < 0.3
-      ? state.camera.lookAt(1, 0.2, 0)
+      ? state.camera.lookAt(1, -0.1, 0)
       : state.camera.lookAt(1, offset * pages * -0.7, 0);
   });
 }
