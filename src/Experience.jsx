@@ -20,11 +20,23 @@ import Flag from "./Flag";
 import Deep from "./Deep";
 import Effect from "./Effect";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CoinPage from "./CoinPage";
 
 export default function Experience() {
   const [coinView, setCoinView] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
+
+  useEffect(() => {
+    const debouncedHandleResize = () =>
+      window.innerWidth < 950 ? setIsMobile(true) : setIsMobile(false);
+
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return (_) => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  });
 
   return (
     <>
@@ -32,7 +44,7 @@ export default function Experience() {
       <color args={["#0B3C54"]} attach={"background"} />
 
       <TextScene />
-      <TextChest />
+      <TextChest isMobile={isMobile} />
       <ScrollControls pages={8}>
         <PirateScene coinView={coinView} setCoinView={setCoinView} />
         {/* Postprocessing */}
@@ -48,8 +60,8 @@ export default function Experience() {
         />
         {/* Camera movements */}
         {/* <OrbitControls makeDefault /> */}
-        {!coinView && <CameraRig />}
-        {coinView && <CoinPage />}
+        {!coinView && <CameraRig isMobile={isMobile} />}
+        {coinView && <CoinPage isMobile={isMobile} />}
       </ScrollControls>
     </>
   );
@@ -91,13 +103,13 @@ function TextScene() {
     </>
   );
 }
-function TextChest() {
+function TextChest({ isMobile }) {
   return (
     <>
       <Text
         font="./kaushan-script-v16-latin-regular.woff"
         fontSize={0.1}
-        position={[1.6, -5, 1.7]}
+        position={[isMobile ? 2.7 : 1.6, -5, 1.7]}
         rotation-y={1}
         maxWidth={1}
         color={"#917E50"}
@@ -110,7 +122,7 @@ function TextChest() {
   );
 }
 
-function CameraRig() {
+function CameraRig({ isMobile }) {
   const scrollPage = useScroll();
 
   useFrame((state, delta) => {
@@ -120,16 +132,22 @@ function CameraRig() {
     easing.damp3(
       state.camera.position,
       [
-        -1 + ((-state.pointer.x / 2) * state.viewport.width) / 35 + 4.64,
+        isMobile
+          ? -1 + ((-state.pointer.x / 2) * state.viewport.width) / 35 + 6.64
+          : -1 + ((-state.pointer.x / 2) * state.viewport.width) / 35 + 4.5,
         -1 * (offset * pages * 0.5) + 0.1 + (1 + state.pointer.y) / 15,
 
-        (-state.pointer.x * state.viewport.width) / 20 + 2.44,
+        isMobile
+          ? (-state.pointer.x * state.viewport.width) / 20 + 3.4
+          : (-state.pointer.x * state.viewport.width) / 20 + 2.44,
       ],
       0.5,
       delta
     );
     offset < 0.44
-      ? state.camera.lookAt(1, -0.1, 0)
+      ? isMobile
+        ? state.camera.lookAt(-0.3, -0.1, 0)
+        : state.camera.lookAt(1, -0.1, 0)
       : state.camera.lookAt(1, offset * pages * -0.7, 0);
   });
 }

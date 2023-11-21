@@ -1,9 +1,11 @@
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
+import { useState } from "react";
 
 const Effect = () => {
+  const [isMobile, setIsMobile] = useState(false);
   return (
     <EffectComposer disableNormalPass>
-      <Vignette offset={0.3} darkness={0.9} />
+      <Vignette offset={0.3} darkness={isMobile ? 0.9 : 0.7} />
       <Bloom
         luminanceThreshold={0}
         mipmapBlur
