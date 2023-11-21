@@ -20,15 +20,21 @@ import Flag from "./Flag";
 import Deep from "./Deep";
 import Effect from "./Effect";
 
+import { useState } from "react";
+import CoinPage from "./CoinPage";
+
 export default function Experience() {
+  const [coinView, setCoinView] = useState(false);
+
   return (
     <>
       {/* <Perf position="top-left" /> */}
       <color args={["#0B3C54"]} attach={"background"} />
 
       <TextScene />
-      <ScrollControls pages={10}>
-        <PirateScene />
+      <TextChest />
+      <ScrollControls pages={8}>
+        <PirateScene coinView={coinView} setCoinView={setCoinView} />
         {/* Postprocessing */}
         <Effect />
         {/* STARTS */}
@@ -41,14 +47,15 @@ export default function Experience() {
           color={"#80806A"}
         />
         {/* Camera movements */}
-        <CameraRig />
         {/* <OrbitControls makeDefault /> */}
+        {!coinView && <CameraRig />}
+        {coinView && <CoinPage />}
       </ScrollControls>
     </>
   );
 }
 
-function PirateScene({ ...props }) {
+function PirateScene({ coinView, setCoinView }) {
   return (
     <>
       <Center>
@@ -60,7 +67,7 @@ function PirateScene({ ...props }) {
         <Background />
       </Center>
       <Flag />
-      <Deep />
+      <Deep coinView={coinView} setCoinView={setCoinView} />
       <WaterBg />
     </>
   );
@@ -84,10 +91,28 @@ function TextScene() {
     </>
   );
 }
+function TextChest() {
+  return (
+    <>
+      <Text
+        font="./kaushan-script-v16-latin-regular.woff"
+        fontSize={0.1}
+        position={[1.6, -5, 1.7]}
+        rotation-y={1}
+        maxWidth={1}
+        color={"#917E50"}
+        fillOpacity={1}
+        lineHeight={1}
+      >
+        Click Me
+      </Text>
+    </>
+  );
+}
 
 function CameraRig() {
-  // This hook gives you offets, ranges and other useful things
   const scrollPage = useScroll();
+
   useFrame((state, delta) => {
     const offset = scrollPage.offset;
     const pages = scrollPage.pages;
@@ -103,7 +128,7 @@ function CameraRig() {
       0.5,
       delta
     );
-    offset < 0.3
+    offset < 0.44
       ? state.camera.lookAt(1, -0.1, 0)
       : state.camera.lookAt(1, offset * pages * -0.7, 0);
   });
